@@ -93,7 +93,7 @@
                 </el-form>
             </div>
             <div>
-                <el-button class="nextButton" type="primary" @click="nextStep">下一步</el-button>
+                <el-button class="nextButton" type="primary"  @click="$router.push('/task')">下一步</el-button>
             </div>
         </div>
     </div>
