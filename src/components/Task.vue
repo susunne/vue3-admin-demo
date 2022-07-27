@@ -7,11 +7,11 @@
                     <el-step title="测评任务" />
                 </el-steps>
             </div>
-            <div >
+            <div>
                 <el-upload ref="upload" class="uploadFile"
                     action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15" :limit="1"
                     :on-exceed="handleExceed" :auto-upload="false">
-                        <el-button type="primary">一键导入</el-button>
+                    <el-button class="button" type="primary">一键导入</el-button>
                 </el-upload>
             </div>
             <div class="taskOne">
@@ -20,14 +20,14 @@
                 </div>
                 <el-form ref="ruleFormRef" :model="taskForm" :rules="taskrules" label-width="120px" status-icon
                     class="taskForm">
-                    <el-form-item label="任务名称" prop="name" >
+                    <el-form-item label="任务名称" prop="name">
                         <el-input v-model="taskForm.name" placeholder="请填写任务名称..." />
                     </el-form-item>
-                    <el-form-item label="任务描述" prop="description" >
+                    <el-form-item label="任务描述" prop="description">
                         <el-input v-model="taskForm.description" type="textarea" resize="none"
                             placeholder="请填写任务描述..." />
                     </el-form-item>
-                    <el-form-item label="任务备注" prop="remark" >
+                    <el-form-item label="任务备注" prop="remark">
                         <el-input v-model="taskForm.remark" type="textarea" resize="none" placeholder="请填写任务备注..." />
                     </el-form-item>
                 </el-form>
@@ -36,10 +36,10 @@
             <div class="taskTwo">
                 <div class="title">
                     <span>任务二</span>
-                    <Delete id="iconDelete" @click="taskList.splice(index, 1)"/>
+                    <Delete id="iconDelete" @click="taskList.splice(index, 1)" />
                 </div>
-                <el-form ref="ruleFormRef2" :model="dynamicTaskForm" :rules="dynamicTaskRules" label-width="120px" status-icon
-                    class="taskForm">
+                <el-form ref="ruleFormRef2" :model="dynamicTaskForm" :rules="dynamicTaskRules" label-width="120px"
+                    status-icon class="taskForm">
                     <el-form-item label="任务名称" prop="name" required>
                         <el-input v-model="dynamicTaskForm.name" placeholder="请填写任务名称..." />
                     </el-form-item>
@@ -48,7 +48,8 @@
                             placeholder="请填写任务描述..." />
                     </el-form-item>
                     <el-form-item label="任务备注" prop="remark" required>
-                        <el-input v-model="dynamicTaskForm.remark" type="textarea" resize="none" placeholder="请填写任务备注..." />
+                        <el-input v-model="dynamicTaskForm.remark" type="textarea" resize="none"
+                            placeholder="请填写任务备注..." />
                     </el-form-item>
                 </el-form>
             </div>
@@ -79,14 +80,14 @@ import type { FormInstance, FormRules } from 'element-plus'
 const active = ref(1)
 const upload = ref<UploadInstance>()
 const handleExceed: UploadProps['onExceed'] = (files) => {
-  upload.value!.clearFiles()
-  const file = files[0] as UploadRawFile
-  file.uid = genFileId()
-  upload.value!.handleStart(file)
+    upload.value!.clearFiles()
+    const file = files[0] as UploadRawFile
+    file.uid = genFileId()
+    upload.value!.handleStart(file)
 }
 
 const submitUpload = () => {
-  upload.value!.submit()
+    upload.value!.submit()
 }
 
 const ruleFormRef = ref<FormInstance>()
@@ -144,10 +145,21 @@ const dynamicTaskRules = reactive({
     margin-top: 39px;
 }
 
-.uploadFile{
-    margin-left:491px;
+.uploadFile {
+    margin-left: 491px;
     margin-top: 40px;
 }
+.el-button > span{
+    width: 48px;
+height: 18px;
+font-family: PingFangSC-Regular;
+font-size: 12px;
+color: #FFFFFF;
+letter-spacing: 0;
+line-height: 18px;
+font-weight: 400;
+}
+
 
 
 .taskOne {
@@ -270,13 +282,14 @@ const dynamicTaskRules = reactive({
     margin-bottom: 15px;
 }
 
-:deep().el-upload{
+:deep().el-upload {
     width: 78px;
-height: 32px;
-background: #337DFF;
-border-radius: 2px;
+    height: 32px;
+    background: #337DFF;
+    border-radius: 2px;
 }
-.el-button--primary{
+
+.el-button--primary {
     background: #337DFF;
     border: none;
 }

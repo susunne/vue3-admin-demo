@@ -105,7 +105,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { reactive } from 'vue'
-import type { FormInstance, FormRules } from 'element-plus'
+// import type { FormInstance, FormRules } from 'element-plus'
 const formSize = ref('default')
 const ruleFormRef = ref<FormInstance>()
 
@@ -145,13 +145,13 @@ const rules = reactive<FormRules>({
 })
 
 
-const productName = ref('')
-const productType = ref('')
-const testType = ref('')
-const testDimension = ref('')
-const collectDate = ref('')
-const testDate = ref('')
-const dataDate = ref('')
+// const productName = ref('')
+// const productType = ref('')
+// const testType = ref('')
+// const testDimension = ref('')
+// const collectDate = ref('')
+// const testDate = ref('')
+// const dataDate = ref('')
 const options = [
     {
         value: '云数据库MySQL',
@@ -213,9 +213,9 @@ const nextStep = () => {
 }
 
 .detailsForm {
-    background-color: #FDFDFD;
+    background-color: #fdfdfd;
     height: 935px;
-    width: 615px;
+    width: 620px;
     margin-top: 15px;
     position: absolute;
     left: 50%;
@@ -239,12 +239,12 @@ const nextStep = () => {
 
 .el-input {
     height: 32px;
-
+width: 400px;
 }
 
-.el-input[data-v-db64aed6] {
+/* .el-input[data-v-db64aed6] {
     width: 400px;
-}
+} */
 
 
 :deep().el-input__wrapper {
@@ -327,7 +327,7 @@ const nextStep = () => {
 }
 
 span {
-    width: 488px;
+    width: 490px;
     height: 18px;
     font-size: 12px;
     color: #BBBBBB;
@@ -362,5 +362,9 @@ span {
     position: absolute;
     margin-left: 471px;
     margin-top: 933px;
+}
+
+.el-button--primary{
+    --el-button-bg-color:#337DFF;
 }
 </style>

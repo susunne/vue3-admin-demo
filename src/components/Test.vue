@@ -38,13 +38,13 @@ taskList: [
 ]
 nextTodoId: 4
 
-addNewList() {
-    this.taskList.unshift({
-        name: this.name,
-        description: this.description,
-        remark: this.remark,
-    })
-}
+// addNewList() {
+//     this.taskList.unshift({
+//         name: this.name,
+//         description: this.description,
+//         remark: this.remark,
+//     })
+// };
 
 
 
