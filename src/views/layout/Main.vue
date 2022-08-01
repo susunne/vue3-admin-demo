@@ -1,13 +1,11 @@
 <template>
-    <div>
-        main
-    </div>
+    <router-view></router-view>
 </template>
 
 <script setup lang="ts">
 
 </script>
 
-<style lang="">
-    
+<style >
+
 </style>

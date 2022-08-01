@@ -1,6 +1,6 @@
 <template>
     <div class="common-layout">
-    <el-container>
+    <el-container style="height:100%">
       <el-header>
         <Header></Header>
       </el-header>
@@ -16,6 +16,11 @@
     import Main from './layout/Main.vue';
 </script>
 
-<style lang="">
-    
+<style >
+.common-layout{
+  height:100%;
+}
+.el-main{
+--el-main-padding:0px;
+}
 </style>

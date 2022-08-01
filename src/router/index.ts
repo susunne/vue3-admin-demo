@@ -1,37 +1,44 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/home',
-    name: 'Home',
-    component: () => import( '../views/Home.vue')
-  },
-  { path: '/', redirect: { name: 'Home' } },
+  { path: '/', redirect: { name: 'Login' } },
   {
     path: '/login',
     name: 'Login',
-    component: () => import( '../views/Login.vue')
+    component: () => import('../views/Login.vue')
   },
   {
     path: '/frontlogin',
     name: 'FrontLogin',
-    component: () => import( '../views/FrontLogin.vue')
+    component: () => import('../views/FrontLogin.vue')
   },
   {
-    path: '/details',
-    name: 'Details',
-    component: () => import( '../components/Details.vue')
-  },
-  {
-    path: '/task',
-    name: 'Task',
-    component: () => import( '../components/Task.vue')
-  },
-  {
-    path: '/test',
-    name: 'Test',
-    component: () => import( '../components/Test.vue')
-  },
+    path: '/home',
+    name: 'Home',
+    component: () => import('../views/Home.vue'),
+    children: [
+      {
+        path: '/details',
+        name: 'Details',
+        component: () => import('../components/Details.vue')
+      },
+      {
+        path: '/task',
+        name: 'Task',
+        component: () => import('../components/Task.vue')
+      },
+      {
+        path: '/test',
+        name: 'Test',
+        component: () => import('../components/Test.vue')
+      },
+      {
+        path: '/manage',
+        name: 'Manage',
+        component: () => import('../components/manage/Manage.vue')
+      }
+    ]
+  }
 ]
 
 const router = createRouter({
