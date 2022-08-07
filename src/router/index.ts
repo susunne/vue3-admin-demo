@@ -28,9 +28,9 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../components/Task.vue')
       },
       {
-        path: '/test',
-        name: 'Test',
-        component: () => import('../components/Test.vue')
+        path: '/list',
+        name: 'List',
+        component: () => import('../components/List.vue')
       },
       {
         path: '/manage',
