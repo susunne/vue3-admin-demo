@@ -7,7 +7,7 @@
         </div>
         <div class="center">
             <el-menu :default-active="$route.path" mode="horizontal" router>
-                <el-menu-item index="/details">测评列表</el-menu-item>
+                <el-menu-item index="/list">测评列表</el-menu-item>
                 <el-menu-item index="/manage">专家管理</el-menu-item>
             </el-menu>
         </div>

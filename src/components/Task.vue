@@ -79,7 +79,7 @@
             <!-- 按钮 -->
             <div class="buttons">
                 <el-button class="lastStep" @click="$router.push('/details')">上一步</el-button>
-                <el-button class="createStep" type="primary">创建</el-button>
+                <el-button class="createStep" type="primary" @click='taskCheck'>创建</el-button>
             </div>
         </el-card>
     </div>
@@ -127,22 +127,58 @@ const taskList = reactive([
 ])
 const addNewTask = function () {
     let statusType = true;
-    taskList.forEach((item) => {
-        if (
-            item.name == "" ||
-            item.description == "" ||
-            item.remark == ""
-        ) {
-            alert('请在完善信息后添加')
-            statusType = false;
-        }
-    });
+    if (
+        taskForm.name == "" ||
+        taskForm.description == "" ||
+        taskForm.remark == ""
+    ) {
+        alert('请在完善信息后添加')
+        statusType = false;
+    }
+    else {
+        taskList.forEach((item) => {
+            if (
+                item.name == "" ||
+                item.description == "" ||
+                item.remark == ""
+            ) {
+                alert('请在完善信息后添加')
+                statusType = false;
+            }
+        });
+    }
     if (statusType) {
         taskList.push({
             name: dynamicTaskForm.name,
             description: dynamicTaskForm.description,
             remark: dynamicTaskForm.remark,
         })
+    }
+}
+const taskCheck = function () {
+    let status = true;
+    if (
+        taskForm.name == "" ||
+        taskForm.description == "" ||
+        taskForm.remark == ""
+    ) {
+        alert('请在完善信息后创建')
+        status = false;
+    }
+    else {
+        taskList.forEach((item) => {
+            if (
+                item.name == "" ||
+                item.description == "" ||
+                item.remark == ""
+            ) {
+                alert('请在完善信息后创建')
+                status = false;
+            }
+        });
+    }
+    if (status) {
+        alert('创建成功')
     }
 }
 </script>
@@ -156,6 +192,7 @@ const addNewTask = function () {
     justify-content: center;
     font-family: PingFangSC-Regular;
     font-size: 12px;
+    overflow: auto;
 
     .taskBox {
         display: flex;

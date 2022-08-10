@@ -17,30 +17,30 @@
             <el-form class="form" :model="form" ref="ruleFormRef" label-width="150px" style="margin-top:40px"
                 :rules="rules">
                 <div class="start">
-                    <el-form-item label="产品名称" required prop="productName" style="width:700px">
+                    <el-form-item label="产品名称" prop="productName" style="width:700px">
                         <el-input placeholder="请输入" maxlength="15" v-model="form.productName"
                             onkeyup="this.value=this.value.replace(/[^\w_^\u4E00-\u9FA5]/g,'')" />
                         <span>名称不得超过15个字符，支持中文、英文大小写、数字、特殊字符仅支持_，中文或英文开头</span>
                     </el-form-item>
-                    <el-form-item label="产品类型" required class="pruductType" prop="productType">
+                    <el-form-item label="产品类型" class="pruductType" prop="productType">
                         <el-select placeholder="请选择" v-model="form.productType">
                             <el-option v-for="item in options" :key="item.value" :label="item.label"
                                 :value="item.value" />
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="测评类型" required prop="testType">
+                    <el-form-item label="测评类型" prop="testType">
                         <el-select placeholder="请选择" v-model="form.testType">
                             <el-option v-for="item in options" :key="item.value" :label="item.label"
                                 :value="item.value" />
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="测评维度" required prop="testDimension">
+                    <el-form-item label="测评维度" prop="testDimension">
                         <el-select placeholder="请选择" v-model="form.testDimension">
                             <el-option v-for="item in options" :key="item.value" :label="item.label"
                                 :value="item.value" />
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="测评描述" required prop="testDescription">
+                    <el-form-item label="测评描述" prop="testDescription">
                         <el-input placeholder="请输入招募专家背景等信息，文案不超过200字" maxlength="200" type="textarea" resize="none"
                             :rows="4" v-model="form.testDescription" />
                     </el-form-item>
@@ -58,22 +58,22 @@
                         </el-form-item>
                         <span class="span1">当招募人数低于填写的最低人数时测评活动不会启动、报名人数到最高值时自动停止招募。为了保证可信度，建议人数在6人左右</span>
                     </el-form-item>
-                    <el-form-item label="所需时间" required prop="time">
+                    <el-form-item label="所需时间" prop="time">
                         <el-input-number controls-position="right" v-model="form.time" :min="1" :max="100" />
                         &nbsp 小时
                     </el-form-item>
                 </div>
                 <div class="date">
-                    <el-form-item label="招募起始时间" required prop="collectDate">
+                    <el-form-item label="招募起始时间" prop="collectDate">
                         <el-date-picker v-model="form.collectDate" type="daterange" unlink-panels range-separator="~"
                             start-placeholder="开始日期" end-placeholder="结束日期" />
                     </el-form-item>
 
-                    <el-form-item label="测评起始时间" required prop="testDate">
+                    <el-form-item label="测评起始时间" prop="testDate">
                         <el-date-picker v-model="form.testDate" type="daterange" unlink-panels range-separator="~"
                             start-placeholder="开始日期" end-placeholder="结束日期" />
                     </el-form-item>
-                    <el-form-item label="数据汇总起始时间" required prop="dataDate">
+                    <el-form-item label="数据汇总起始时间" prop="dataDate">
                         <el-date-picker v-model="form.dataDate" type="daterange" unlink-panels range-separator="~"
                             start-placeholder="开始日期" end-placeholder="结束日期" />
                     </el-form-item>
@@ -82,10 +82,10 @@
                     <el-form-item label="测试账号" class="checkBox">
                         <el-checkbox label="提供测试账号" name="type" />
                     </el-form-item>
-                    <el-form-item label="账号" required prop="username">
+                    <el-form-item label="账号" prop="username">
                         <el-input placeholder="请输入" v-model="form.username" />
                     </el-form-item>
-                    <el-form-item label="密码" required prop="password">
+                    <el-form-item label="密码" prop="password">
                         <el-input v-model="form.password" show-password placeholder="请输入" type="password" />
                     </el-form-item>
 
@@ -99,19 +99,15 @@
             <div class="button1">
                 <el-button class="nextButton" type="primary" @click="$router.push('/task')">下一步</el-button>
             </div>
-
         </el-card>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { reactive } from 'vue'
-// import type { FormInstance, FormRules } from 'element-plus'
+import { ref, reactive } from 'vue'
+import type { FormInstance, FormRules } from 'element-plus'
 const formSize = ref('default')
 const ruleFormRef = ref<FormInstance>()
-
-
 var validateName = (rule: any, value: any, callback: any) => {
     if (/^[a-zA-Z\u4E00-\u9FA5][a-zA-Z0-9_\u4E00-\u9FA5]*$/.test(value)) {
         callback()
@@ -119,17 +115,15 @@ var validateName = (rule: any, value: any, callback: any) => {
         callback(new Error('请输入合法的名称'))
     }
 }
-
-
 const form = reactive({
     productName: '',
     productType: '',
     testType: '',
     testDimension: '',
     testDescription: '',
-    minPeople: '',
-    maxPeople: '',
-    time: '',
+    minPeople: 1,
+    maxPeople: 1,
+    time: 1,
     collectDate: '',
     testDate: '',
     dataDate: '',
@@ -137,23 +131,6 @@ const form = reactive({
     password: '',
     useRemark: '',
 })
-
-
-const rules = reactive<FormRules>({
-    productName: [
-        { validator: validateName, trigger: 'blur' },
-    ],
-
-})
-
-
-// const productName = ref('')
-// const productType = ref('')
-// const testType = ref('')
-// const testDimension = ref('')
-// const collectDate = ref('')
-// const testDate = ref('')
-// const dataDate = ref('')
 const options = [
     {
         value: '云数据库MySQL',
@@ -176,18 +153,23 @@ const options = [
         label: '离线语音合成',
     },
 ]
-const minPeople = ref(1)
-const maxPeople = ref(1)
-const time = ref(1)
 const active = ref(0)
-const useRemark = ref('')
-const password = ref('')
-const username = ref('')
-const testDescription = ref('')
-const nextStep = () => {
-    active.value++;
-}
-
+const rules = reactive<FormRules>({
+    productName: [{ required: true, message: '请输入产品名称', trigger: 'blur' },
+    { validator: validateName, trigger: 'blur' },],
+    productType: [{ required: true, message: '请输入产品类型', trigger: 'blur' }],
+    testType: [{ required: true, message: '请输入测评类型', trigger: 'blur' }],
+    testDimension: [{ required: true, message: '请输入测评维度', trigger: 'blur' }],
+    testDescription: [{ required: true, message: '请输入测评描述', trigger: 'blur' }],
+    minPeople: [{ required: true, message: '请输入所需最小人数', trigger: 'blur' }],
+    maxPeople: [{ required: true, message: '请输入所需最大人数', trigger: 'blur' }],
+    time: [{ required: true, message: '请输入所需时间', trigger: 'blur' }],
+    collectDate: [{ required: true, message: '请输入招募起始时间', trigger: 'blur' }],
+    testDate: [{ required: true, message: '请输入测评起始时间', trigger: 'blur' }],
+    dataDate: [{ required: true, message: '请输入数据汇总起始时间', trigger: 'blur' }],
+    username: [{ required: true, message: '请输入账号', trigger: 'blur' }],
+    password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+})
 </script>
 
 <style lang="scss" >
