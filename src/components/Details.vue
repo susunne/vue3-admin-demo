@@ -175,10 +175,8 @@ const rules = reactive<FormRules>({
 <style lang="scss" >
 .detailsContainer {
     display: flex;
-    background-color: #f3f5f8;
     align-items: center;
     justify-content: center;
-    font-family: PingFangSC-Regular;
     font-size: 12px;
     overflow: auto;
 

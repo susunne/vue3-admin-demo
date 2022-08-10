@@ -187,10 +187,8 @@ const taskCheck = function () {
 <style  lang="scss">
 .taskContainer {
     display: flex;
-    background-color: #f3f5f8;
     align-items: center;
     justify-content: center;
-    font-family: PingFangSC-Regular;
     font-size: 12px;
     overflow: auto;
 

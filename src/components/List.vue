@@ -76,17 +76,17 @@
 
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 import { taskListData } from './list'
 import { ElTable } from 'element-plus'
 const currentPage = ref(1)
 const pageSize = ref(10)
 const listData = taskListData();
-const data = reactive({
-    listData: [],
-    currentPage: 1,
-    pageSize: 10
-})
+// const data = reactive({
+//     listData: [],
+//     currentPage: 1,
+//     pageSize: 10
+// })
 const handle = (index: number, row: listData) => {
     console.log(index, row)
 }
@@ -128,8 +128,6 @@ const listTableRef = ref<InstanceType<typeof ElTable>>()
     height: 100%;
     overflow: auto;
     display: flex;
-    background-color: #f3f5f8;
-    font-family: PingFangSC-Regular;
     font-size: 12px;
     flex-direction: column;
 

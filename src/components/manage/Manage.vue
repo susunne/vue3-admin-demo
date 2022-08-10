@@ -1,6 +1,7 @@
 <template>
   <div class="manageContainer">
     <el-card class="boxCard">
+      <!-- 表格 -->
       <el-table :data="manageData.slice((currentPage - 1) * pageSize, currentPage * pageSize)" ref="manageTableRef"
         height="440" stripe border :header-row-style="{ height: '40px' }" :row-style="{ height: '40px' }">
         <el-table-column prop="department" label="部门" width="250" />
@@ -13,6 +14,7 @@
           </template>
         </el-table-column>
       </el-table>
+      <!-- 分页 -->
       <div class="pagination">
         <el-pagination v-model:currentPage.sync="currentPage" v-model:page-size="pageSize"
           :page-sizes="[10, 20, 30, 40]" :pager-count="5" :small="true"
@@ -23,17 +25,18 @@
   </div>
 </template>
 
+
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 import { userData } from './user'
 const currentPage = ref(1)
 const pageSize = ref(10)
 const manageData = userData();
-const data = reactive({
-  manageData: [],
-  currentPage: 1,
-  pageSize: 10
-})
+// const data = reactive({
+//   manageData: [],
+//   currentPage: 1,
+//   pageSize: 10
+// })
 const handleDelete = (index: number, row: userData) => {
   console.log(index, row)
 }
@@ -47,15 +50,13 @@ const handleCurrentChange = (val: number) => {
 }
 </script>
 
+
 <style  scoped>
 .manageContainer {
   display: flex;
-  background-color: #f3f5f8;
   width: 100%;
   height: 100%;
-  /* align-items: center; */
   justify-content: center;
-  font-family: PingFangSC-Regular;
   font-size: 12px;
   color: #333333;
   letter-spacing: 0;
